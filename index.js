@@ -25,10 +25,12 @@ WasRun.prototype = Object.create(TestCase.prototype);
 WasRun.prototype.setUp = function(){
   this.wasRun = false;
   this.wasSetUp = true;
+  this.log = 'setUp '
 }
 
 WasRun.prototype.testMethod = function(){
   this.wasRun = true;
+  this.log += 'testMethod ';
 }
 
 function TestCaseTest(name){
@@ -37,19 +39,10 @@ function TestCaseTest(name){
 
 TestCaseTest.prototype = Object.create(TestCase.prototype);
 
-TestCaseTest.prototype.setUp = function(){
-  this.test = new WasRun('testMethod');
+TestCaseTest.prototype.testTemplateMethod = function(){
+  const test = new WasRun('testMethod');
+  test.run();
+  assert.equal('setUp testMethod ', test.log);
 }
 
-TestCaseTest.prototype.testRunning = function(){
-  this.test.run();
-  assert.isTrue(this.test.wasRun);
-}
-
-TestCaseTest.prototype.testSetUp = function(){
-  this.test.run();
-  assert.isTrue(this.test.wasSetUp);
-}
-
-new TestCaseTest('testRunning').run();
-new TestCaseTest('testSetUp').run();
+new TestCaseTest('testTemplateMethod').run();
