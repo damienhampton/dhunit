@@ -9,10 +9,15 @@ TestCase.prototype.setUp = function(){
   //nothing
 }
 
+TestCase.prototype.tearDown = function(){
+  //nothing
+}
+
 TestCase.prototype.run = function(){
   this.setUp();
   const method = this[this.name].bind(this);
   method();
+  this.tearDown();
 }
 
 function WasRun(name){
@@ -33,6 +38,10 @@ WasRun.prototype.testMethod = function(){
   this.log += 'testMethod ';
 }
 
+WasRun.prototype.tearDown = function(){
+  this.log += 'tearDown ';
+}
+
 function TestCaseTest(name){
   TestCase.call(this, name);
 }
@@ -42,7 +51,7 @@ TestCaseTest.prototype = Object.create(TestCase.prototype);
 TestCaseTest.prototype.testTemplateMethod = function(){
   const test = new WasRun('testMethod');
   test.run();
-  assert.equal('setUp testMethod ', test.log);
+  assert.equal('setUp testMethod tearDown ', test.log);
 }
 
 new TestCaseTest('testTemplateMethod').run();
