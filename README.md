@@ -2,12 +2,6 @@
 
 This is a simple JS prototype port of Kent Beck's Python xUnit example used in his excellent Test Driven Development book.
 
-## install
-
-`npm i`
-
-(The tests require the chai assertion library)
-
 ## testing
 
 `npm test`
