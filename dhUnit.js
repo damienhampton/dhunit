@@ -46,32 +46,6 @@ TestCase.prototype.run = function(result){
   return result;
 }
 
-function WasRun(name){
-  this.wasSetUp = false;
-  TestCase.call(this, name);
-}
-
-WasRun.prototype = Object.create(TestCase.prototype);
-
-WasRun.prototype.setUp = function(){
-  this.wasRun = false;
-  this.wasSetUp = true;
-  this.log = 'setUp '
-}
-
-WasRun.prototype.testMethod = function(){
-  this.wasRun = true;
-  this.log += 'testMethod ';
-}
-
-WasRun.prototype.testBrokenMethod = function(){
-  throw Error('testBrokenMethod');
-}
-
-WasRun.prototype.tearDown = function(){
-  this.log += 'tearDown ';
-}
-
 function TestResult(){
   this.runCount = 0;
   this.errorCount = 0;
@@ -85,4 +59,3 @@ TestResult.prototype.testFailed = function(){
 TestResult.prototype.summary = function(){
   return `${this.runCount} run, ${this.errorCount} failed`;
 }
-
