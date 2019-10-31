@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
-    "chai": "^4.2.0"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "test": "node test/test"

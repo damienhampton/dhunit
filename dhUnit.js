@@ -1,6 +1,4 @@
 'use strict'
-const assert = require('chai').assert;
-
 module.exports = {
   TestSuite,
   TestCase,

@@ -1,5 +1,5 @@
 'use strict'
-const assert = require('chai').assert;
+const assert = require('assert');
 const { TestCase, TestSuite, TestResult } = require('../dhUnit');
 
 function SimpleMaths(name){
